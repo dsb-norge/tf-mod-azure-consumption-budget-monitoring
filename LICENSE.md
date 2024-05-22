@@ -1,4 +1,4 @@
-Copyright (c) 2022, Norwegian Directorate for Civil Protection - DSB
+Copyright (c) 2024, Norwegian Directorate for Civil Protection - DSB
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
