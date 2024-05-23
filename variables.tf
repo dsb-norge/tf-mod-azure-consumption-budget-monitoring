@@ -11,7 +11,6 @@ variable "consumption_budget_amount" {
 variable "cost_anomaly_alert_email_receivers" {
   description = "The email addresses to receive cost anomaly alerts"
   type        = list(string)
-  nullable    = false
 }
 
 variable "environment" {

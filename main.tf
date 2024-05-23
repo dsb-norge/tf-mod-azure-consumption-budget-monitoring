@@ -41,7 +41,14 @@ resource "azurerm_consumption_budget_subscription" "sub_budget_consumption" {
   # tags not supported
 }
 
+moved {
+  from = azurerm_cost_anomaly_alert.sub_cost_anomaly_alert
+  to   = azurerm_cost_anomaly_alert.sub_cost_anomaly_alert[0]
+}
+
 resource "azurerm_cost_anomaly_alert" "sub_cost_anomaly_alert" {
+  count = try(length(var.cost_anomaly_alert_email_receivers), 0) > 0 ? 1 : 0
+
   display_name    = "Cost Anomaly Alert for subscription: ${var.subscription}"
   email_addresses = var.cost_anomaly_alert_email_receivers
   email_subject   = "Cost Anomaly detected in subscription: ${var.subscription}"

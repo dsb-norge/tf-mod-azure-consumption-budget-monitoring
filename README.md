@@ -19,11 +19,6 @@ module "consumption_budget" {
   subscription                        = "my-subscription-name"
   environment                         = "production"
   consumption_budget_amount           = "9000" # in local currency of subscription location
-
-  cost_anomaly_alert_email_receivers = [
-    "some@email.internal",
-    "some.other@email.internal",
-  ]
 }
 ```
 
