@@ -6,11 +6,22 @@ variable "app_short_name" {
 variable "consumption_budget_amount" {
   description = "The amount of money to be consumed"
   type        = number
+
+  validation {
+    condition     = var.consumption_budget_amount > 0
+    error_message = "The consumption budget amount must be greater than 0"
+  }
 }
 
 variable "cost_anomaly_alert_email_receivers" {
   description = "The email addresses to receive cost anomaly alerts"
   type        = list(string)
+  default     = []
+
+  validation {
+    error_message = "value must be a valid email address"
+    condition     = can(var.cost_anomaly_alert_email_receivers) && alltrue([for email in var.cost_anomaly_alert_email_receivers : can(regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", email))])
+  }
 }
 
 variable "environment" {
@@ -44,4 +55,9 @@ variable "consumption_budget_time_grain" {
   description = "The time grain for the consumption budget"
   type        = string
   default     = "Monthly"
+
+  validation {
+    error_message = "value must be one of BillingAnnual, BillingMonth, BillingQuarter, Annually, Monthly and Quarterly"
+    condition     = can(var.consumption_budget_time_grain) && contains(["BillingAnnual", "BillingMonth", "BillingQuarter", "Annually", "Monthly", "Quarterly"], var.consumption_budget_time_grain)
+  }
 }
