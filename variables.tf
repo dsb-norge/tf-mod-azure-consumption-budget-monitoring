@@ -58,6 +58,10 @@ variable "cost_anomaly_alert_email_receivers" {
 
   validation {
     error_message = "value must be a valid email address"
-    condition     = can(var.cost_anomaly_alert_email_receivers) && alltrue([for email in var.cost_anomaly_alert_email_receivers : can(regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", email))])
+    condition = try(var.cost_anomaly_alert_email_receivers, null) != null ? (
+      alltrue([
+        for email in var.cost_anomaly_alert_email_receivers :
+        can(regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", email))
+    ])) : true # allow null as input
   }
 }
