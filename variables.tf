@@ -13,17 +13,6 @@ variable "consumption_budget_amount" {
   }
 }
 
-variable "cost_anomaly_alert_email_receivers" {
-  description = "The email addresses to receive cost anomaly alerts"
-  type        = list(string)
-  default     = []
-
-  validation {
-    error_message = "value must be a valid email address"
-    condition     = can(var.cost_anomaly_alert_email_receivers) && alltrue([for email in var.cost_anomaly_alert_email_receivers : can(regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", email))])
-  }
-}
-
 variable "environment" {
   description = "The runtime environment targeted. Development, test, qa, production etc"
   type        = string
@@ -59,5 +48,16 @@ variable "consumption_budget_time_grain" {
   validation {
     error_message = "value must be one of BillingAnnual, BillingMonth, BillingQuarter, Annually, Monthly and Quarterly"
     condition     = can(var.consumption_budget_time_grain) && contains(["BillingAnnual", "BillingMonth", "BillingQuarter", "Annually", "Monthly", "Quarterly"], var.consumption_budget_time_grain)
+  }
+}
+
+variable "cost_anomaly_alert_email_receivers" {
+  description = "The email addresses to receive cost anomaly alerts"
+  type        = list(string)
+  default     = []
+
+  validation {
+    error_message = "value must be a valid email address"
+    condition     = can(var.cost_anomaly_alert_email_receivers) && alltrue([for email in var.cost_anomaly_alert_email_receivers : can(regex("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", email))])
   }
 }
