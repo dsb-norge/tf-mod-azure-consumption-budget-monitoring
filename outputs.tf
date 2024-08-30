@@ -5,6 +5,6 @@ output "consumption_budget_id" {
 }
 
 output "cost_anomaly_alert_id" {
-  value       = azurerm_cost_anomaly_alert.sub_cost_anomaly_alert.*.id
+  value       = azurerm_cost_anomaly_alert.sub_cost_anomaly_alert[*].id
   description = "value of the cost anomaly alert id"
 }
