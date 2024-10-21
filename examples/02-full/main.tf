@@ -5,7 +5,7 @@ provider "azurerm" {
 module "consumption_budget" {
   source = "../../"
 
-  app_short_name            = "my-azure-app"
+  app_short_name            = "my-budget-full"
   subscription              = "sub-name"
   environment               = "prod"
   consumption_budget_amount = 9000 # in local currency of subscription location
