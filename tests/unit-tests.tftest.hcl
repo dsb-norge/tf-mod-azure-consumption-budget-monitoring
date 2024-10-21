@@ -216,8 +216,8 @@ run "it_should_output_resource_id_for_cost_anomaly_alert" {
     cost_anomaly_alert_email_receivers = ["vaild.dummy@epost.her"]
   }
 
-    assert {
-        condition     = length(output.cost_anomaly_alert_id) > 0
-        error_message = "Cost anomaly alert id outpout is missing"
-    }
+  assert {
+    condition     = length(output.cost_anomaly_alert_id) > 0
+    error_message = "Cost anomaly alert id outpout is missing"
+  }
 }
