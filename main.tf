@@ -51,7 +51,7 @@ resource "azurerm_cost_anomaly_alert" "sub_cost_anomaly_alert" {
 
   display_name    = "Cost Anomaly Alert for subscription: ${var.subscription}"
   email_addresses = var.cost_anomaly_alert_email_receivers
-  email_subject   = "Cost Anomaly detected in subscription: ${var.subscription}"
+  email_subject   = "Cost Anomaly detected in subscription : ${var.subscription}"
   name            = "cost-anomaly-alert-${var.subscription}-${var.app_short_name}-${var.environment}"
   subscription_id = data.azurerm_subscription.current.id
 
