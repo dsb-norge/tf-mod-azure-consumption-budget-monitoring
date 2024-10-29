@@ -20,7 +20,7 @@ env:
 
 jobs:
   tf:
-    uses: dsb-norge/github-actions-terraform/.github/workflows/terraform-module-ci.yaml@tf-test
+    uses: dsb-norge/github-actions-terraform/.github/workflows/terraform-module-ci.yaml@v0
     secrets: inherit
     permissions:
         contents: read  # required for checkout action. 
@@ -28,3 +28,4 @@ jobs:
         pull-requests: write # required for commenting on PR
     with:
       terraform-version: "1.9.x"
+      tflint-version: "v0.53.0"
