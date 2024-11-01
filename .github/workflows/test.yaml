@@ -23,7 +23,7 @@ jobs:
     uses: dsb-norge/github-actions-terraform/.github/workflows/terraform-module-ci.yaml@tf-docs
     secrets: inherit
     permissions:
-        contents: read  # required for checkout action. 
+        contents: write  # required for checkout action. 
         id-token: write # required for Azre passwodless login
         pull-requests: write # required for commenting on PR
     with:
