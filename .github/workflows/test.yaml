@@ -20,7 +20,7 @@ env:
 
 jobs:
   tf:
-    uses: dsb-norge/github-actions-terraform/.github/workflows/terraform-module-ci.yaml@v0
+    uses: dsb-norge/github-actions-terraform/.github/workflows/terraform-module-ci.yaml@tf-docs
     secrets: inherit
     permissions:
         contents: read  # required for checkout action. 
