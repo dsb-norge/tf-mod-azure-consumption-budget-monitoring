@@ -29,3 +29,4 @@ jobs:
     with:
       terraform-version: "1.9.x"
       tflint-version: "v0.53.0"
+      readme-file-path: ${{ github.workspace }}
